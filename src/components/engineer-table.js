@@ -9,10 +9,10 @@ class EngineerTable extends Component {
   // tableData; // piece of state: 
   // EngineerTable data.
   
-  // readSourceFileTree() // action creator (called on drag from SourceFileTree):
+  // readSourceFileTree(files) // action creator (called on drag from SourceFileTree):
   // Reads files from SourceFileTree and writes selected data into tableData.
 
-  // writeTableDataToDB() // action creator (called on drop into EngineerTable):
+  // writeTableDataToDB() // action creator (called on: drop into EngineerTable):
   // Reads data from tableData and Writes it into db
   
   // fetchTable() // action creator (callback after writeTableDataToDB is done): 
@@ -47,4 +47,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ readSourceFileTree, writeTableDataToDB, fetchTable }, dispatch);
 }
 
-export default connect(mapStateToProps)(EngineerTable);
+export default connect(mapStateToProps, mapDispatchToProps)(EngineerTable);
