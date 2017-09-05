@@ -2,10 +2,11 @@ export const READ_SOURCE_FILE_TREE = 'READ_SOURCE_FILE_TREE';
 
 export function readSourceFileTree(files) {
   // fetch data from documents
-  // write data into array or tableData object
-  // pass data to reducer as payload
+  // promise to: write data into array or tableData object
+  // const promise = axios.request(url);
+  // pass promise via middleware to reducer as payload
   return {
     type: READ_SOURCE_FILE_TREE,
-    payload: tableData
+    payload: promise
   };
 }
