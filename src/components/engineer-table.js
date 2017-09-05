@@ -7,14 +7,17 @@ import EngineerTableForm from './engineer-table-form';
 class EngineerTable extends Component {
   
   // tableData; // piece of state: 
-  // Data from db
+  // EngineerTable data.
   
-  // generateTable // action creator: 
-  // Generates EngineerTable rows on drag-drop from SourceFolderTree
+  // readSourceFileTree() // action creator (called on drag from SourceFileTree):
+  // Reads files from SourceFileTree and writes selected data into tableData.
 
-  // writeTable
+  // writeTableDataToDB() // action creator (called on drop into EngineerTable):
+  // Reads data from tableData and Writes it into db
   
-    
+  // fetchTable() // action creator (callback after writeTableDataToDB is done): 
+  // Reads data from db to render it in EngineerTable
+  
   render() {
     // EngineerTable displays and maintains main product table.
     return (
@@ -27,7 +30,7 @@ class EngineerTable extends Component {
           <th>Material</th>
         </thead>
         <tbody>
-          {this.generateTable()}
+          {this.fetchTable()}
         </tbody>
       </table>
     );
@@ -36,6 +39,12 @@ class EngineerTable extends Component {
   
 }
 
+function mapStateToProps({ tableData }) {
+  return { tableData: tableData };
+}
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ readSourceFileTree, writeTableDataToDB, fetchTable }, dispatch);
+}
 
 export default connect(mapStateToProps)(EngineerTable);
