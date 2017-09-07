@@ -3,7 +3,10 @@ products {}
 resources {}
 processes {
   byId : {
-    
+    "process1" : {
+      id: "process1",
+      resource: 
+    }
   }
 }
 stocks {}
