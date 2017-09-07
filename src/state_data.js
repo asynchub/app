@@ -5,7 +5,8 @@ processes {
   byId : {
     "process1" : {
       id: "process1",
-      resource: 
+      resource: "machine1",
+      
     }
   }
 }
