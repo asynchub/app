@@ -1,6 +1,11 @@
 organizer {}
 products {}
 resources {}
+processes {
+  byId : {
+    
+  }
+}
 stocks {}
 materials {}
 customers {}
@@ -24,6 +29,13 @@ syncFileTree {}
         // what will be rendered - will be calculated however with latest data.
         // calculated numbers upon render: (map over cells, to be rendered) shall be fast enough
         // calculated numbers for database: (map over tree's branches of parent assemblies throughout root assembly)
+
+        // calculated properties in render():
+        // totalWeight
+        // totalQty
+        // surfaceArea
+        // processesTime
+        // 
 productTree {
   assemblies : {
     byId : {
@@ -38,7 +50,8 @@ productTree {
         totalWeight: null,
         parentAssemblies : [],
         childrenAssemblies : [ "assembly2", "assembly3" ],
-        details : []
+        details : [],
+        processes : []
       }
       "assembly2" : {
         id : "assembly2",
@@ -51,7 +64,8 @@ productTree {
         totalWeight: null,
         parentAssemblies : [ "assembly1" ],
         childrenAssemblies : [],
-        details : [ "detail1", "detail2" ]
+        details : [ "detail1", "detail2" ],
+        processes : []
       }
       "assembly3" : {
         id : "assembly3",
@@ -64,7 +78,8 @@ productTree {
         totalWeight: null,
         parentAssemblies : [ "assembly1" ],
         childrenAssemblies : [],
-        details : [ "detail1", "detail2", "detail3", "detail4" ]
+        details : [ "detail1", "detail2", "detail3", "detail4" ],
+        processes : []
       }
     }
     allIds : [ "assembly1", "assembly2", "assembly3" ]
@@ -80,7 +95,8 @@ productTree {
         totalQty: null,
         weightOfEach: 0,  
         totalWeight: null,
-        parentAssemblies : [ "SPS-20-000", "SPS-10-000" ]
+        parentAssemblies : [ "SPS-20-000", "SPS-10-000" ],
+        processes : []
       }
       "detail2" : {
         id : "detail2",
@@ -91,7 +107,8 @@ productTree {
         totalQty: null,
         weightOfEach: 0,  
         totalWeight: null,
-        parentAssemblies : [ "SPS-20-000", "SPS-10-000" ]
+        parentAssemblies : [ "SPS-20-000", "SPS-10-000" ],
+        processes : []
       }
       "detail3" : {
         id : "detail3",
@@ -102,7 +119,8 @@ productTree {
         totalQty: null,
         weightOfEach: 0,  
         totalWeight: null,
-        parentAssemblies : [ "SPS-20-000" ]
+        parentAssemblies : [ "SPS-20-000" ],
+        processes : []
       }
       "detail4" : {
         id : "detail4",
@@ -113,7 +131,8 @@ productTree {
         totalQty: null,
         weightOfEach: 0,  
         totalWeight: null,
-        parentAssemblies : [ "SPS-20-000" ]
+        parentAssemblies : [ "SPS-20-000" ],
+        processes : []
       }
     }
     allIds: [ "detail1", "detail2", "detail3", "detail4" ]
