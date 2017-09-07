@@ -36,7 +36,7 @@ productTree {
         totalQty: null,
         weightOfEach: 0,  
         totalWeight: null,
-        parentAssemblies : []
+        parentAssemblies : [],
         childrenAssemblies : [ "assembly2", "assembly3" ],
         details : []
       }
