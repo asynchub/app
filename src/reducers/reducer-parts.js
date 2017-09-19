@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { 
   EDIT_CELL,
-  ADD_PART
+  ADD_PART,
+  FETCH_PARTS_FROM_DB
 } from '../actions/index';
 
 function editPartProperty(state={}, action) {
@@ -27,6 +28,7 @@ function partsById(state={}, action) {
   switch (action.payload) {
     case EDIT_CELL: return editPartProperty(state, action);
     case ADD_PART: return addPart(state, action);
+    case FETCH_PARTS_FROM_DB: return action.payload;
     default: return state;
   }    
 }
