@@ -24,7 +24,10 @@ export const EDIT_CELL = 'EDIT_CELL';
 export function addPart(part) {
   return {
     type: ADD_PART,
-    payload: part
+    payload: {
+      part,
+      partId
+    }
   }
 }
 
