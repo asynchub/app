@@ -21,6 +21,13 @@ export const WRITE_PARTS_TO_DB = 'WRITE_PARTS_TO_DB';
 export const ADD_PART = 'ADD_PART';
 export const EDIT_CELL = 'EDIT_CELL';
 
+export function addPart(part) {
+  return {
+    type: ADD_PART,
+    payload: part
+  }
+}
+
 export function editCell(partId, partProperty, propertyValue) { // part, propertyName, newValue
   /*
   const partzzz = db.parts;
