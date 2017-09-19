@@ -12,7 +12,15 @@ function editPartProperty(state={}, action) {
 }
 
 function addPart(state={}, action) {
-  
+  const { payload } = action;
+  return { ...state, payload.part };
+}
+
+function addPartId(state=[], action) {
+  const { payload } = action;
+  const { part, partId } = payload;
+  // const partId = generateId(); // generates the unique id every other time
+  return [ ...state, part[partId] ];
 }
 
 function partsById(state={}, action) {
@@ -24,8 +32,11 @@ function partsById(state={}, action) {
 }
 
 
-function allIds(state={}, action) {
-  
+function allIds(state=[], action) {
+  swithch (action.payload) {
+    case ADD_PART: return addPartId(state, action);
+    default: return state;
+  }
 }
 
 export default function partsReducer = combineReducers({
