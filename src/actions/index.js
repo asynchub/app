@@ -21,7 +21,8 @@ export const WRITE_PARTS_TO_DB = 'WRITE_PARTS_TO_DB';
 export const ADD_PART = 'ADD_PART';
 export const EDIT_CELL = 'EDIT_CELL';
 
-export function editCell(part, propertyName, newValue) {
+export function editCell(partId, partProperty, propertyValue) { // part, propertyName, newValue
+  /*
   const partzzz = db.parts;
   const partsObject = partzzz.byId;
   const changedPart = partsObject[part.id];
@@ -33,15 +34,18 @@ export function editCell(part, propertyName, newValue) {
   const parts = Object.assign({}, partzzz, {
     byId: newPartsObject
   })
+  */
 
+  // console.log(parts.byId[part.id][propertyName]);
 
-
-  console.log(parts.byId[part.id][propertyName]);
-
-  console.log(parts);
+  // console.log(parts);
   return {
     type: EDIT_CELL,
-    payload: parts
+    payload: {
+      partId,
+      partProperty,
+      propertyValue,
+    }
   }
 }
 
