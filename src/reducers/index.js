@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import TableData from 'reducer-table-data';
+import productParts from './reducer-product-parts';
+import productMaterials from './reducer-product-materials';
 
 const rootReducer = combineReducers({
-  tableData: TableData
+  parts: productParts,
+  materials: productMaterials
 });
 
 export default rootReducer;
