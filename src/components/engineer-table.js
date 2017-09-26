@@ -35,7 +35,7 @@ class EngineerTable extends Component {
     this.handleAddButtonClick = this.handleAddButtonClick.bind(this);
     this.handleDelButtonClick = this.handleDelButtonClick.bind(this);
     this.handleCheckBoxClick = this.handleCheckBoxClick.bind(this);
-    this.clearCheckBoxes = this.clearCheckBoxes.bind(this);
+    // this.clearCheckBoxes = this.clearCheckBoxes.bind(this);
     // this.generateId = this.generateId.bind(this);
   }
 
@@ -58,6 +58,8 @@ class EngineerTable extends Component {
     const { parts } = this.props;
     if (!parts) { return null; }
     const { byId } = this.props.parts;
+    const { clipBoard_UI } = this.props;
+    
     console.log(parts);
     console.log(this.props.clipBoard_UI);
     // this.props.fetchMaterialsFromDB(parts);
@@ -74,7 +76,8 @@ class EngineerTable extends Component {
           part={part} 
           id={id} 
           onCheckBoxClick={this.handleCheckBoxClick}
-          clearCheckBoxes={this.clearCheckBoxes}/>
+          isChecked={clipBoard_UI.allIds.length}
+        />
       );
     });
   }
@@ -94,9 +97,6 @@ class EngineerTable extends Component {
     }
   }
   
-  clearCheckBoxes() {
-    return false;
-  }
   
   handleAddButtonClick(event) {
     // console.log(event.target);
