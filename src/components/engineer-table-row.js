@@ -35,35 +35,7 @@ class TableRow extends Component {
   }
 
   handleCheckBoxClick(event) {
-    console.log(event.target.id);
-    const { parts } = this.props;
-    const { id } = event.target;
-    const part = parts.byId[id];
-    const { clipBoard_UI } =  this.props;
-    if (event.target.checked) {
-      this.props.copyPart_UI(part, id);
-      // let newClipboard = {...this.state.checkedParts, id: part}
-      // console.log("checked");
-      // this.setState({ checkedParts: { ...this.state.checkedParts, [id]: part } });
-      // this.props.copyPart_UI(parts.byId[id]);
-    }
-    if (!event.target.checked) {
-      // console.log("unchecked");
-      // console.log(id);
-      this.props.removePart_UI(id);
-      // let newClipboard = _.omit(this.state.checkedParts, [id])
-
-      // this.setState({ checkedParts: _.omit(this.state.checkedParts, [id]) });
-    }
-    // console.log(clipBoard_UI);
-    // console.log(this.state.checkedParts);
-    // const checkedPartsIds = Object.keys(this.state.checkedParts);
-    // console.log(checkedPartsIds);
-    /*
-    _.map(checkedPartsIds, id => {
-      this.props.copyPart_UI(parts.byId[id]);
-    });
-    */
+    this.props.onCheckBoxClick(event);
   }
 
   render() {
