@@ -33,6 +33,7 @@ class EngineerTable extends Component {
     super(props);
     this.handleAddButtonClick = this.handleAddButtonClick.bind(this);
     this.handleDelButtonClick = this.handleDelButtonClick.bind(this);
+    this.handleCheckBoxClick = this.handleCheckBoxClick.bind(this);
     // this.generateId = this.generateId.bind(this);
   }
 
@@ -66,12 +67,44 @@ class EngineerTable extends Component {
     return _.map(parts.allIds, id => {
       let part = byId[id];
       return (
-        <TableRow key={id} part={part} id={id} />
+        <TableRow key={id} part={part} id={id} onCheckBoxClick={this.handleCheckBoxClick} />
       );
     });
   }
+  
+  // lifted from engineer-table-row
+  handleCheckBoxClick(event) {
+    console.log(event.target.id);
+    const { parts } = this.props;
+    const { id } = event.target;
+    const part = parts.byId[id];
+    const { clipBoard_UI } =  this.props;
+    if (event.target.checked) {
+      this.props.copyPart_UI(part, id);
+      // let newClipboard = {...this.state.checkedParts, id: part}
+      // console.log("checked");
+      // this.setState({ checkedParts: { ...this.state.checkedParts, [id]: part } });
+      // this.props.copyPart_UI(parts.byId[id]);
+    }
+    if (!event.target.checked) {
+      // console.log("unchecked");
+      // console.log(id);
+      this.props.removePart_UI(id);
+      // let newClipboard = _.omit(this.state.checkedParts, [id])
 
-
+      // this.setState({ checkedParts: _.omit(this.state.checkedParts, [id]) });
+    }
+    // console.log(clipBoard_UI);
+    // console.log(this.state.checkedParts);
+    // const checkedPartsIds = Object.keys(this.state.checkedParts);
+    // console.log(checkedPartsIds);
+    /*
+    _.map(checkedPartsIds, id => {
+      this.props.copyPart_UI(parts.byId[id]);
+    });
+    */
+  }
+  
   handleAddButtonClick(event) {
     // console.log(event.target);
     const { clipBoard_UI } = this.props;
