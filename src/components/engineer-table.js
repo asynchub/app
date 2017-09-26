@@ -14,6 +14,7 @@ import {
   removePart,
   copyPart_UI,
   pasteParts_UI,
+  removePart_UI,
   cleanClipBoard_UI,
   editCell
 } from '../actions/index';
@@ -199,6 +200,7 @@ function mapDispatchToProps(dispatch) {
     removePart,
     copyPart_UI,
     pasteParts_UI,
+    removePart_UI,
     cleanClipBoard_UI,
     editCell,
     fetchPartsFromDB,
