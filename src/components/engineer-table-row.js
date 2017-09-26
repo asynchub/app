@@ -46,14 +46,14 @@ class TableRow extends Component {
     const { id } = this.props;
     const part = parts.byId[id];
     if (!part) { return null; } // for asyncronosity of removePart action
-    
+
     const { editable } = this.props;
     // console.log("from TableRow:", parts);
 
     if (this.props.editable) {
       return (
         <tr>
-          <td><input type="checkbox" id={id} onClick={this.handleCheckBoxClick} checked={this.props.isChecked}/></td>
+          <td><input type="checkbox" id={id} onClick={this.handleCheckBoxClick}  checked={this.props.checked} /></td>
           <td>nr</td>
           <TableCell partId={id} editable={editable} partProperty="title" />
           <TableCell partId={id} editable={editable} partProperty="description" />
@@ -73,7 +73,7 @@ class TableRow extends Component {
     }
     return (
       <tr>
-        <td><input type="checkbox" id={id} onClick={this.handleCheckBoxClick} checked={this.props.checkBoxChecked} /></td>
+        <td><input type="checkbox" id={id} onClick={this.handleCheckBoxClick} checked={this.props.checked} /></td>
         <td>nr</td>
         <TableCell partId={id} partProperty="title" />
         <TableCell partId={id} partProperty="description" />
@@ -95,8 +95,8 @@ class TableRow extends Component {
 
 }
 
-function mapStateToProps( { parts, clipBoard_UI } ) {
-  return { parts, clipBoard_UI };
+function mapStateToProps( { parts } ) {
+  return { parts };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -35,7 +35,6 @@ class EngineerTable extends Component {
     this.handleAddButtonClick = this.handleAddButtonClick.bind(this);
     this.handleDelButtonClick = this.handleDelButtonClick.bind(this);
     this.handleCheckBoxClick = this.handleCheckBoxClick.bind(this);
-    // this.clearCheckBoxes = this.clearCheckBoxes.bind(this);
     // this.generateId = this.generateId.bind(this);
   }
 
@@ -58,8 +57,6 @@ class EngineerTable extends Component {
     const { parts } = this.props;
     if (!parts) { return null; }
     const { byId } = this.props.parts;
-    const { clipBoard_UI } = this.props;
-    
     console.log(parts);
     console.log(this.props.clipBoard_UI);
     // this.props.fetchMaterialsFromDB(parts);
@@ -68,21 +65,24 @@ class EngineerTable extends Component {
     // do we still need it here?
     // if (!byId) { return; }
 
+    const { clipBoard_UI } = this.props;
+
+
     return _.map(parts.allIds, id => {
       let part = byId[id];
+      let isChecked = clipBoard_UI.byId[id];
       return (
-        <TableRow 
-          key={id} 
-          part={part} 
-          id={id} 
-          onCheckBoxClick={this.handleCheckBoxClick}
-          isChecked={clipBoard_UI.byId[id]}
-        />
+        <TableRow
+        key={id}
+        part={part}
+        id={id}
+        onCheckBoxClick={this.handleCheckBoxClick}
+        checked={isChecked} />
       );
     });
   }
-  
-  // lifted from engineer-table-row
+
+
   handleCheckBoxClick(event) {
     console.log(event.target.id);
     const { parts } = this.props;
@@ -91,13 +91,31 @@ class EngineerTable extends Component {
     const { clipBoard_UI } =  this.props;
     if (event.target.checked) {
       this.props.copyPart_UI(part, id);
+      // let newClipboard = {...this.state.checkedParts, id: part}
+      // console.log("checked");
+      // this.setState({ checkedParts: { ...this.state.checkedParts, [id]: part } });
+      // this.props.copyPart_UI(parts.byId[id]);
     }
     if (!event.target.checked) {
+      // console.log("unchecked");
+      // console.log(id);
       this.props.removePart_UI(id);
+      // let newClipboard = _.omit(this.state.checkedParts, [id])
+
+      // this.setState({ checkedParts: _.omit(this.state.checkedParts, [id]) });
     }
+    // console.log(clipBoard_UI);
+    // console.log(this.state.checkedParts);
+    // const checkedPartsIds = Object.keys(this.state.checkedParts);
+    // console.log(checkedPartsIds);
+    /*
+    _.map(checkedPartsIds, id => {
+      this.props.copyPart_UI(parts.byId[id]);
+    });
+    */
   }
-  
-  
+
+
   handleAddButtonClick(event) {
     // console.log(event.target);
     const { clipBoard_UI } = this.props;
@@ -113,7 +131,7 @@ class EngineerTable extends Component {
         let part = { ...partsToPaste[id], id: newId };
         this.props.addPart(part);
       });
-      
+
       // to implement with generation of new ids and new parts with new id's
       // in reducer, and then can use one liner action creator:
       // this.props.pasteParts_UI(partIdsToPaste, partIdsToPaste);

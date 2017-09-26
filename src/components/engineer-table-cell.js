@@ -8,6 +8,22 @@ import {
 } from '../actions/index';
 
 
+function Input(props) {
+  const defaultValue = props.defaultValue
+  return (
+    <input
+      type={props.type}
+      size={(!defaultValue) ? 10 : (defaultValue.length * 1.2) }
+
+      onMouseLeave={props.handleDeactivateEdit}
+      onChange={props.handleChange}
+      onKeyUp={props.handleSubmitEdit}
+      onClick={props.handleActivateEdit}
+
+      defaultValue={defaultValue}>
+    </input>
+  );
+}
 
 
 class TableCell extends Component {
@@ -59,17 +75,16 @@ class TableCell extends Component {
     }
     console.log(this.props.type);
     return (
-      <td>
-        <input
+      <td >
+        <Input
+        type={this.props.type}
 
-          type={this.props.type}
-          size={(!cellValue) ? 10 : (cellValue.length * 1.2) }
-          onChange={this.handleChange}
-          onKeyUp={this.submitEdit}
-          onClick={this.activateEdit}
-          onMouseLeave={this.deactivateEdit}
-          defaultValue={cellValue}>
-        </input>
+        handleDeactivateEdit={this.deactivateEdit}
+        handleChange={this.handleChange}
+        handleSubmitEdit={this.submitEdit}
+        handleActivateEdit={this.activateEdit}
+
+        defaultValue={cellValue}/>
       </td>
     );
   }
