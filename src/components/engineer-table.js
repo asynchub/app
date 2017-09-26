@@ -35,7 +35,7 @@ class EngineerTable extends Component {
     this.handleAddButtonClick = this.handleAddButtonClick.bind(this);
     this.handleDelButtonClick = this.handleDelButtonClick.bind(this);
     this.handleCheckBoxClick = this.handleCheckBoxClick.bind(this);
-    this.handleCheckBoxToggle = this.handleCheckBoxToggle.bind(this);
+    this.clearCheckBoxes = this.clearCheckBoxes.bind(this);
     // this.generateId = this.generateId.bind(this);
   }
 
@@ -74,7 +74,7 @@ class EngineerTable extends Component {
           part={part} 
           id={id} 
           onCheckBoxClick={this.handleCheckBoxClick}
-          checkBoxToggled={this.handleCheckBoxToggle}/>
+          clearCheckBoxes={this.clearCheckBoxes}/>
       );
     });
   }
@@ -88,21 +88,14 @@ class EngineerTable extends Component {
     const { clipBoard_UI } =  this.props;
     if (event.target.checked) {
       this.props.copyPart_UI(part, id);
-      // let newClipboard = {...this.state.checkedParts, id: part}
-      // console.log("checked");
-      // this.setState({ checkedParts: { ...this.state.checkedParts, [id]: part } });
-      // this.props.copyPart_UI(parts.byId[id]);
     }
     if (!event.target.checked) {
       this.props.removePart_UI(id);
     }
   }
   
-  handleCheckBoxToggle(event) {
-    const { clipBoard_UI } = this.props;
-    if (!clipBoard_UI.allIds.length) {
-       return false;
-    }
+  clearCheckBoxes() {
+    return false;
   }
   
   handleAddButtonClick(event) {
@@ -120,7 +113,7 @@ class EngineerTable extends Component {
         let part = { ...partsToPaste[id], id: newId };
         this.props.addPart(part);
       });
-
+      
       // to implement with generation of new ids and new parts with new id's
       // in reducer, and then can use one liner action creator:
       // this.props.pasteParts_UI(partIdsToPaste, partIdsToPaste);
