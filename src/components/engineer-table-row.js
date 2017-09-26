@@ -73,7 +73,7 @@ class TableRow extends Component {
     }
     return (
       <tr>
-        <td><input type="checkbox" id={id} onClick={this.handleCheckBoxClick} checked=this.props.checkBoxChecked /></td>
+        <td><input type="checkbox" id={id} onClick={this.handleCheckBoxClick} checked={this.props.checkBoxChecked} /></td>
         <td>nr</td>
         <TableCell partId={id} partProperty="title" />
         <TableCell partId={id} partProperty="description" />
