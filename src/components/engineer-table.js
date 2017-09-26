@@ -74,7 +74,7 @@ class EngineerTable extends Component {
           part={part} 
           id={id} 
           onCheckBoxClick={this.handleCheckBoxClick}
-          checkBoxhandleCheckBoxToggle/>
+          checkBoxToggled={this.handleCheckBoxToggle}/>
       );
     });
   }
@@ -99,7 +99,10 @@ class EngineerTable extends Component {
   }
   
   handleCheckBoxToggle(event) {
-    return !event.target.checked;
+    const { clipBoard_UI } = this.props;
+    if (!clipBoard_UI.allIds.length) {
+       return false;
+    }
   }
   
   handleAddButtonClick(event) {
