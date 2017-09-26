@@ -76,7 +76,7 @@ class EngineerTable extends Component {
           part={part} 
           id={id} 
           onCheckBoxClick={this.handleCheckBoxClick}
-          isChecked={clipBoard_UI.allIds.length}
+          isChecked={clipBoard_UI.byId[id]}
         />
       );
     });
