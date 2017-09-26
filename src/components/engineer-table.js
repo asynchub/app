@@ -35,6 +35,7 @@ class EngineerTable extends Component {
     this.handleAddButtonClick = this.handleAddButtonClick.bind(this);
     this.handleDelButtonClick = this.handleDelButtonClick.bind(this);
     this.handleCheckBoxClick = this.handleCheckBoxClick.bind(this);
+    this.handleCheckBoxToggle = this.handleCheckBoxToggle.bind(this);
     // this.generateId = this.generateId.bind(this);
   }
 
@@ -68,7 +69,12 @@ class EngineerTable extends Component {
     return _.map(parts.allIds, id => {
       let part = byId[id];
       return (
-        <TableRow key={id} part={part} id={id} onCheckBoxClick={this.handleCheckBoxClick} />
+        <TableRow 
+          key={id} 
+          part={part} 
+          id={id} 
+          onCheckBoxClick={this.handleCheckBoxClick}
+          checkBoxhandleCheckBoxToggle/>
       );
     });
   }
@@ -88,22 +94,12 @@ class EngineerTable extends Component {
       // this.props.copyPart_UI(parts.byId[id]);
     }
     if (!event.target.checked) {
-      // console.log("unchecked");
-      // console.log(id);
       this.props.removePart_UI(id);
-      // let newClipboard = _.omit(this.state.checkedParts, [id])
-
-      // this.setState({ checkedParts: _.omit(this.state.checkedParts, [id]) });
     }
-    // console.log(clipBoard_UI);
-    // console.log(this.state.checkedParts);
-    // const checkedPartsIds = Object.keys(this.state.checkedParts);
-    // console.log(checkedPartsIds);
-    /*
-    _.map(checkedPartsIds, id => {
-      this.props.copyPart_UI(parts.byId[id]);
-    });
-    */
+  }
+  
+  handleCheckBoxToggle(event) {
+    return !event.target.checked;
   }
   
   handleAddButtonClick(event) {
