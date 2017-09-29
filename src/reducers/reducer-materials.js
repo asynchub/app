@@ -30,7 +30,7 @@ function gradesByGradeStd(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.gradesByGradeStd;
-    case FILTER_OPTIONS_BY: return filterObject(state, action);
+    case FILTER_OPTIONS_BY_GRADE: return filterObject(state, action);
     default: return state;
   }
 }
@@ -39,7 +39,7 @@ function allGradesStds(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allGradesStds;
-    case FILTER_OPTIONS_BY: return filterList(state, action);
+    case FILTER_OPTIONS_BY_GRADE: return filterList(state, action);
     (state, action);
     default: return state;
   }
@@ -49,7 +49,7 @@ function allGrades(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allGrades;
-    case FILTER_OPTIONS_BY: return filterList(state, action);
+    case FILTER_OPTIONS_BY_GRADE: return filterList(state, action);
     default: return state;
   }
 }
