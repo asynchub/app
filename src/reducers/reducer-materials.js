@@ -21,6 +21,9 @@ const materialsReducer = combineReducers({
   
   surfaceClassesBySurfaceStds, // surface classes grouped by surface standards
   allSurfaceClasses, // array of all surface classes
+  
+  stockMaterialsById, // object of stock materials, fetched according some or all criterias above
+  allStockMaterialsIds, // array of all stock materials, fetched according some or all criterias above
 });
 
 export default materialsReducer;
