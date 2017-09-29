@@ -13,10 +13,12 @@ const materialsReducer = combineReducers({
   allProfiles, // array of profiles
   allSizes, // collection of all sizes from sizesByProfile
   
-  
+  profilesByToleranceStds,
   
   toleranceStds,
-  surfaceStds
+  surfaceStds,
+  
+  surfaceClasses,
 })
 
 export default materialsReducer;
