@@ -6,11 +6,12 @@ import {
   // materials according to 3 material criterias in a row: grade, profile, size
   FETCH_STOCK_MATERIALS_FROM_DB, 
   FILTER_OPTIONS_BY,
+  FILTER_STOCK_MATERIALS_BY
 }
 
 // this general helper function, called from object slice reducers on action FILTER_OPTIONS_BY
 // FILTER_OPTIONS_BY action.payload will have both: objects and arrays to return new object here
-function filterObjects(state={}, action) {
+function filterObject(state={}, action) {
   const { payload } = action;
   // return new state without arrays by id's that are not passed by action
   return state; 
@@ -29,7 +30,7 @@ function gradesByGradeStd(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.gradesByGradeStd;
-    case FILTER_OPTIONS_BY: return filterObjects(state, action);
+    case FILTER_OPTIONS_BY: return filterObject(state, action);
     default: return state;
   }
 }
@@ -38,6 +39,8 @@ function allGradesStds(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allGradesStds;
+    case FILTER_OPTIONS_BY: return filterList(state, action);
+    (state, action);
     default: return state;
   }
 }
@@ -46,6 +49,7 @@ function allGrades(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allGrades;
+    case FILTER_OPTIONS_BY: return filterList(state, action);
     default: return state;
   }
 }
@@ -56,6 +60,7 @@ function sizesByProfile(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.sizesByProfile;
+    case FILTER_OPTIONS_BY: return filterObject(state, action);
     default: return state;
   }
 }
@@ -64,6 +69,7 @@ function allProfiles(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allProfiles;
+    case FILTER_OPTIONS_BY: return filterList(state, action);
     default: return state;
   }
 }
@@ -72,6 +78,7 @@ function allSizes(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allProfiles;
+    case FILTER_OPTIONS_BY: return filterList(state, action);
     default: return state;
   }
 }
@@ -82,6 +89,7 @@ function profilesByToleranceStds(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.profilesByToleranceStds;
+    case FILTER_OPTIONS_BY: return filterObject(state, action);
     default: return state;
   }
 }
@@ -90,6 +98,7 @@ function allToleranceStds(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allToleranceStds;
+    case FILTER_OPTIONS_BY: return filterList(state, action);
     default: return state;
   }
 }
@@ -100,6 +109,7 @@ function surfaceStdsByProfiles(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.surfaceStdsByProfiles;
+    case FILTER_OPTIONS_BY: return filterObject(state, action);
     default: return state;
   }
 }
@@ -108,6 +118,7 @@ function allSurfaceStds(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allSurfaceStds;
+    case FILTER_OPTIONS_BY: return filterList(state, action);
     default: return state;
   }
 }
@@ -118,6 +129,7 @@ function surfaceClassesBySurfaceStds(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.surfaceClassesBySurfaceStds;
+    case FILTER_OPTIONS_BY: return filterObject(state, action);
     default: return state;
   }
 }
@@ -126,6 +138,7 @@ function allSurfaceClasses(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.allSurfaceClasses;
+    case FILTER_OPTIONS_BY: return filterList(state, action);
     default: return state;
   }
 }
@@ -136,6 +149,7 @@ function stockMaterialsById(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_STOCK_MATERIALS_FROM_DB: return payload.stockMaterialsById;
+    case FILTER_STOCK_MATERIALS_BY: return filterObject(state, action);
     default: return state;
   }
 }
@@ -144,6 +158,7 @@ function stockMaterialsAllIds(state=[], action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_STOCK_MATERIALS_FROM_DB: return payload.stockMaterialsAllIds;
+    case FILTER_STOCK_MATERIALS_BY: return filterList(state, action);
     default: return state;
   }
 }
