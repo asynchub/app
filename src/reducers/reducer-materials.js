@@ -6,19 +6,21 @@ import {
 
 const materialsReducer = combineReducers({
   gradesByGradeStd, // grades grouped into standards accordingly
-  allGradesStds, // array of grade standards
+  allGradesStds, // array of all grade standards
   allGrades, // collection of all grades from gradesByGradeStds
   
   sizesByProfile, // sizes grouped into profiles accordingly
-  allProfiles, // array of profiles
+  allProfiles, // array of all profiles
   allSizes, // collection of all sizes from sizesByProfile
   
-  profilesByToleranceStds,
+  profilesByToleranceStds, // profiles grouped by tolerance standards
+  allToleranceStds, // array of all tolerance standards
+
+  surfaceStdsByProfiles, // surface standards grouped by profiles
+  allSurfaceStds, // array of all surface standards
   
-  toleranceStds,
-  surfaceStds,
-  
-  surfaceClasses,
-})
+  surfaceClassesBySurfaceStds, // surface classes grouped by surface standards
+  allSurfaceClasses, // array of all surface classes
+});
 
 export default materialsReducer;
