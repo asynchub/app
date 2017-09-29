@@ -8,13 +8,28 @@ import {
   FILTER_OPTIONS_BY,
 }
 
+// this general helper function, called from object slice reducers on action FILTER_OPTIONS_BY
+// FILTER_OPTIONS_BY action.payload will have both: objects and arrays to return new object here
+function filterObjects(state={}, action) {
+  const { payload } = action;
+  // return new state without arrays by id's that are not passed by action
+  return state; 
+}
 
+// this is general helper function, called from array slice reducers on action FILTER_OPTIONS_BY
+// FILTER_OPTIONS_BY action.payload will have both: objects and arrays to return new array here
+function filterList(state=[], action) {
+  const { payload } = action;
+  // return new state without arrays by id's that are not passed by action
+  return state;
+}
 
 
 function gradesByGradeStd(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.gradesByGradeStd;
+    case FILTER_OPTIONS_BY: return filterObjects(state, action);
     default: return state;
   }
 }
@@ -22,7 +37,7 @@ function gradesByGradeStd(state={}, action) {
 function allGradesStds(state=[], action) {
   const { payload } = action;
   switch(action.type) {
-      case FETCH_MATERIALS_FROM_DB: return payload.allGradesStds;
+    case FETCH_MATERIALS_FROM_DB: return payload.allGradesStds;
     default: return state;
   }
 }
