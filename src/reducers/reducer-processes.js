@@ -16,6 +16,18 @@ function allProcesses(state=[], action) {
 
 const processesReducer = combineReducers({
   allProcesses,
+  allProcessesWithLabels,
+  processNameByProcess,
+  machinesByProcess,
+  workshopsByProcess,
+  processesByWorkshop,
+  allMachines,
+  allWorkshops,
+  workersQtyByProcess,
+  workersNamesByProcess,
+  allWorkersQtys,
+  allWorkersNames,
+  processTimeFunctionsByProcesses,
 });
 
 export default processesReducer;
