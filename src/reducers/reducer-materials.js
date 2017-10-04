@@ -10,7 +10,7 @@ import {
   FILTER_OPTIONS_BY_TOLERANCE_STDS,
   FILTER_OPTIONS_BY_SURFACE_STDS,
   FILTER_STOCK_MATERIALS_BY
-}
+} from '../actions/index';
 
 // this general helper function, called from object slice reducers on action FILTER_OPTIONS_BY
 // FILTER_OPTIONS_BY action.payload will have both: objects and arrays to return new object here
@@ -32,8 +32,18 @@ function filterList(state=[], action) {
 
 function gradesByGradeStd(state={}, action) {
   const { payload } = action;
+  console.log(payload);
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.gradesByGradeStd;
+    case FILTER_OPTIONS_BY_GRADE_STDS: return filterObject(state, action);
+    default: return state;
+  }
+}
+
+function gradeStdsByGrade(state={}, action) {
+  const { payload } = action;
+  switch(action.type) {
+    case FETCH_MATERIALS_FROM_DB: return payload.gradeStdsByGrade;
     case FILTER_OPTIONS_BY_GRADE_STDS: return filterObject(state, action);
     default: return state;
   }
@@ -59,6 +69,7 @@ function allGrades(state=[], action) {
 
 
 
+
 function sizesByProfile(state={}, action) {
   const { payload } = action;
   switch(action.type) {
@@ -80,7 +91,7 @@ function allProfiles(state=[], action) {
 function allSizes(state=[], action) {
   const { payload } = action;
   switch(action.type) {
-    case FETCH_MATERIALS_FROM_DB: return payload.allProfiles;
+    case FETCH_MATERIALS_FROM_DB: return payload.allSizes;
     case FILTER_OPTIONS_BY_PROFILES: return filterList(state, action);
     default: return state;
   }
@@ -88,10 +99,20 @@ function allSizes(state=[], action) {
 
 
 
+
 function profilesByToleranceStds(state={}, action) {
   const { payload } = action;
   switch(action.type) {
     case FETCH_MATERIALS_FROM_DB: return payload.profilesByToleranceStds;
+    case FILTER_OPTIONS_BY_TOLERANCE_STDS: return filterObject(state, action);
+    default: return state;
+  }
+}
+
+function toleranceStdsByProfile(state={}, action) {
+  const { payload } = action;
+  switch(action.type) {
+    case FETCH_MATERIALS_FROM_DB: return payload.toleranceStdsByProfile;
     case FILTER_OPTIONS_BY_TOLERANCE_STDS: return filterObject(state, action);
     default: return state;
   }
@@ -171,6 +192,7 @@ function stockMaterialsAllIds(state=[], action) {
 
 const materialsReducer = combineReducers({
   gradesByGradeStd, // grades grouped into standards accordingly
+  gradeStdsByGrade, // standards grouped into grades accordingly
   allGradesStds, // array of all grade standards
   allGrades, // collection of all grades from gradesByGradeStds
 
@@ -179,6 +201,7 @@ const materialsReducer = combineReducers({
   allSizes, // collection of all sizes from sizesByProfile
 
   profilesByToleranceStds, // profiles grouped by tolerance standards
+  toleranceStdsByProfile, // tolerance standards grouped by profiles
   allToleranceStds, // array of all tolerance standards
 
   surfaceStdsByProfiles, // surface standards grouped by profiles
