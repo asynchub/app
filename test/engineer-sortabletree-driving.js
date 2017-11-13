@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TableCell from './engineer-table-cell';
 import ButtonGroup from './engineer-button-group';
+import _ from 'lodash';
 import SortableTree, {
   getFlatDataFromTree,
   getTreeFromFlatData,
@@ -132,16 +133,28 @@ class EngineerSortableTree extends Component {
 
     const parent = parentNode ? parentNode.node.id : null;
     const { id, expanded } = node;
+
+    /*
     const prevParentId = prevParentNode ? prevParentNode.node.id : null;
+      */
+    const prevParentId = this.props.parts.byId[node.id].parentId; // instead of line above
     // console.log("prevParentId: ", prevParentId);
+
     const parentChildren = parentNode ?
       parentNode.node.children.map(child => child.id) :
       null;
+    // console.log("parentChildren: ", parentChildren);
+    
+    /*
     const prevParentChildren = prevParentNode ?
       prevParentNode.node.children.map(child => child.id) :
       null;// this.props.parts.byId[prevParentId].childrenIds;
-    // console.log("parentChildren: ", parentChildren);
+      */
+    const prevParentChildren =
+      _.without(this.props.parts.byId[prevParentId].childrenIds, node.id); // instead of line above
     // console.log("prevParentChildren: ", prevParentChildren);
+
+
     console.log("handleOnMoveNode: ", moveData);
     // console.log("handleOnMoveNode: ", moveData, treeIndex, parentNode);
     // console.log("id, expanded, parent : ", id, expanded, parent);
